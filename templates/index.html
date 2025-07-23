@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Split Bill Calculator</title>
+    <style>
+        body { font-family: sans-serif; max-width: 500px; margin: 50px auto; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        input { width: 100%; padding: 8px; margin-top: 5px; box-sizing: border-box; }
+        button { width: 100%; padding: 10px; margin-top: 20px; background-color: #007BFF; color: white; border: none; cursor: pointer; }
+        h2 { color: #28a745; }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    <h1>Split Bill Calculator</h1>
+    
+    <form action="/calculate" method="post">
+        <label for="total_bill">Total Tagihan (Rp):</label>
+        <input type="number" id="total_bill" name="total_bill" step="any" required>
+        
+        <label for="tip">Persentase Tip (%):</label>
+        <input type="number" id="tip" name="tip" required>
+        
+        <label for="people">Jumlah Orang:</label>
+        <input type="number" id="people" name="people" required>
+        
+        <button type="submit">Hitung</button>
+    </form>
+    
+    {% if result %}
+        <h2>Setiap orang harus membayar: {{ result }}</h2>
+    {% endif %}
+
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% endif %}
+</body>
+</html>
